@@ -1,6 +1,6 @@
 class ApiClient {
 
-    static SERVER_URL = 'http://localhost:8080';
+    static SERVER_URL = 'http://educational-track-personalization-0:8080';
     static GET_CHALLENGE = '/test';
     // static POST_RESULT = '/attempts';
 
