@@ -1,11 +1,16 @@
+var SERVER_HOST_PORT = process.env.REACT_APP_BACKEND_HOST || 'localhost:8080';
+
 class ApiClient {
 
-    static SERVER_URL = 'http://educational-track-personalization:8080';
+
     static GET_CHALLENGE = '/test';
     // static POST_RESULT = '/attempts';
 
     static test(): Promise<Response> {
-        return fetch(ApiClient.SERVER_URL + ApiClient.GET_CHALLENGE);
+        console.log('SERVER_HOST_PORT ' + SERVER_HOST_PORT);
+        console.log('process.env.COMPONENT_BACKEND_HOST ' + process.env.REACT_APP_BACKEND_HOST);
+
+        return fetch('http://' + SERVER_HOST_PORT + ApiClient.GET_CHALLENGE);
     }
 
     // static sendGuess(user: string,
