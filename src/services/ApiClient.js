@@ -1,6 +1,6 @@
 var SERVER_HOST_PORT = process.env.REACT_APP_BACKEND_HOST || 'localhost:8080';
 
-class ApiClient {
+ class ApiClient {
 
 
     static GET_CHALLENGE = '/test';
@@ -36,4 +36,3 @@ class ApiClient {
 }
 
 export default ApiClient;
-export default SERVER_HOST_PORT;
