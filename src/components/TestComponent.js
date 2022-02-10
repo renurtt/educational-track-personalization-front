@@ -1,5 +1,6 @@
 import * as React from "react";
 import ApiClient from "../services/ApiClient";
+import SERVER_HOST_PORT from "../services/ApiClient";
 
 
 
@@ -26,7 +27,7 @@ class TestComponent extends React.Component {
                         console.log("message:" + json);
                         this.setState({
                             test_title: json.message,
-                            message: "data retrieved from " + ApiClient.SERVER_URL + ApiClient.GET_CHALLENGE
+                            message: "data retrieved from " + SERVER_HOST_PORT + ApiClient.GET_CHALLENGE
                         });
 
                     });

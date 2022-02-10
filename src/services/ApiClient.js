@@ -36,3 +36,4 @@ class ApiClient {
 }
 
 export default ApiClient;
+export default SERVER_HOST_PORT;
