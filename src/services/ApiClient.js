@@ -1,9 +1,11 @@
 var SERVER_HOST_PORT = process.env.REACT_APP_BACKEND_HOST || 'localhost:8080';
 
- class ApiClient {
+class ApiClient {
 
 
     static GET_CHALLENGE = '/test';
+    static POST_QUESTIONNAIRE = '/questionnaire';
+
     // static POST_RESULT = '/attempts';
 
     static test(): Promise<Response> {
@@ -11,6 +13,14 @@ var SERVER_HOST_PORT = process.env.REACT_APP_BACKEND_HOST || 'localhost:8080';
         console.log('process.env.COMPONENT_BACKEND_HOST ' + process.env.REACT_APP_BACKEND_HOST);
 
         return fetch('http://' + SERVER_HOST_PORT + ApiClient.GET_CHALLENGE);
+    }
+
+    static sendQuestionnaire(name: string): Promise<Response> {
+        return fetch('http://' + SERVER_HOST_PORT + ApiClient.POST_QUESTIONNAIRE, {
+            method: 'POST', headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({name: name})
+        });
     }
 
     // static sendGuess(user: string,
