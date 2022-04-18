@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import Questionnaire from "./components/Questionnaire";
 import TestComponent from "./components/TestComponent";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -17,11 +19,10 @@ ReactDOM.render(
             <Route path="/" element={<App />} />
             <Route path="questionnaire" element={<Questionnaire />} />
             <Route path="test-component" element={<TestComponent />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
         </Routes>
     </BrowserRouter>,
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>,
   document.getElementById('root')
 );
 

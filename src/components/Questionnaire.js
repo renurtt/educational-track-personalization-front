@@ -23,7 +23,7 @@ class Questionnaire extends React.Component {
                         console.log(json.message)
                     })
                 } else {
-                    console.log("Sorry, the server is off")
+                    console.log("Error")
                 }
             });
     }

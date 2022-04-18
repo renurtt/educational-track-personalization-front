@@ -1,8 +1,8 @@
+import AuthClient from "./AuthClient";
+
 var SERVER_HOST_PORT = process.env.REACT_APP_BACKEND_HOST || 'localhost:8080';
 
 class ApiClient {
-
-
     static GET_CHALLENGE = '/test';
     static POST_QUESTIONNAIRE = '/questionnaire';
 
@@ -18,7 +18,8 @@ class ApiClient {
     static sendQuestionnaire(name: string): Promise<Response> {
         return fetch('http://' + SERVER_HOST_PORT + ApiClient.POST_QUESTIONNAIRE, {
             method: 'POST', headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': AuthClient.ACCESS_TOKEN
             }, body: JSON.stringify({name: name})
         });
     }
