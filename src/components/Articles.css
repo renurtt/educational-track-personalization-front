@@ -1,0 +1,45 @@
+.Articles {
+    text-align: left;
+    background-color: #9a8b8b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #ffffff;
+}
+
+label[type=articles_list_title] {
+    cursor: pointer;
+    font-size: 12pt;
+    float: left;
+    width: 100%;
+}
+label[type=articles_list_description] {
+    font-size: 8pt;
+    float: left;
+    color: #c5c5c5;
+    width: 100%;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+div[type=articleType] {
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+    margin-left: 100px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: #838383;
+    border-style: solid;
+    cursor: pointer;
+    background-color: #675e5e;
+    padding: 13px 13px 13px 13px;
+}
+
+h3[type="articles_page_title"]{
+    width: 100%;
+    text-align: center;
+}

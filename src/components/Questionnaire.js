@@ -37,7 +37,8 @@ class Questionnaire extends React.Component {
     }
 
     render() {
-        return (<div className="Questionnaire">
+        return (
+            <div className="Questionnaire">
             <h3>Questionnaire</h3>
             <form onSubmit={this.handleSubmitResult}>
                 <label>Name: </label>

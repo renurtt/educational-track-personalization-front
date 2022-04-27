@@ -5,6 +5,7 @@ class AuthClient {
 
     static LOGIN_ENDPOINT = '/auth/login';
     static REGISTER_ENDPOINT = '/auth/register/user';
+    // static ACCESS_TOKEN = 'eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJRY2RPIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwiaWF0IjoxNjUwNTc4OTkwLCJleHAiOjE2NTE3ODQ0MDB9.JZuUVDruXE0-XoEgroBl0dDMYOJApjLkV_intjWyd2PEFijbGGlLaJxNqHHLB8wC';
     static ACCESS_TOKEN = null;
 
     static login(username: string, password: string): Promise<Response> {

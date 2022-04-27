@@ -6,12 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import {
     BrowserRouter,
     Routes,
-    Route,
+    Route, useParams,
 } from "react-router-dom";
 import Questionnaire from "./components/Questionnaire";
 import TestComponent from "./components/TestComponent";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import UserProfile from "./components/UserProfile";
+import Articles from "./components/Articles";
+import Article from "./components/Article";
+
+const Wrapper = (props) => {
+    const params = useParams();
+    return <Article {...{...props, match: {params}} } />
+}
 
 ReactDOM.render(
     <BrowserRouter>
@@ -21,6 +29,9 @@ ReactDOM.render(
             <Route path="test-component" element={<TestComponent />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="profile" element={<UserProfile />} />
+            <Route path="articles" element={<Articles />} />
+            <Route path="article/:id" element={<Wrapper />} />
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')

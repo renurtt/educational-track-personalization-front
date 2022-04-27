@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+button[type=menu-button] {
+  background-color: #82a0b4;
+  color: white;
+  padding: 12px 20px;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+  /*border-radius: 4px;*/
+  cursor: pointer;
+  float: right;
+  width: 200px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button[type=menu-button]:hover {
+  background-color: #fa6a6a;
+}
