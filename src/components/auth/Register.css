@@ -9,3 +9,31 @@
     font-size: calc(10px + 2vmin);
     color: #ffffff;
 }
+
+div.auth {
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+    align-items: center;
+    justify-content: center;
+
+}
+div.auth label       { text-align:right; }
+div.auth label:after { content: ":"; }
+
+input.auth_submit {
+    background-color: #82a0b4;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 40%;
+    margin-top: 40px;
+    position: center;
+    text-align: center;
+    font-size: 12pt;
+}
+input.auth_submit:hover {
+    background-color: #45a049;
+}

@@ -3,7 +3,6 @@ import * as React from "react";
 import './Article.css';
 import ApiClient from "../services/ApiClient";
 import ArticleDTO from "../dto/ArticleDTO";
-import {useParams} from "react-router-dom";
 
 class Article extends React.Component {
 

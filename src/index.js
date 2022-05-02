@@ -15,6 +15,7 @@ import Register from "./components/auth/Register";
 import UserProfile from "./components/UserProfile";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
+import Track from "./components/Track";
 
 const Wrapper = (props) => {
     const params = useParams();
@@ -32,6 +33,7 @@ ReactDOM.render(
             <Route path="profile" element={<UserProfile />} />
             <Route path="articles" element={<Articles />} />
             <Route path="article/:id" element={<Wrapper />} />
+            <Route path="track" element={<Track />} />
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')

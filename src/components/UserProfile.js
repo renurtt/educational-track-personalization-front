@@ -26,7 +26,9 @@ class UserProfile extends React.Component {
                         college: json.college || '',
                         userCity: json.city || '',
                         birthdayYear: json.birthdayYear || '',
-                        desiredPosition: json.desiredPosition || ''
+                        desiredPosition: json.desiredPosition || '',
+
+                        isProfileSyncedWithServer: false
                     })
                 })
             } else {
@@ -52,8 +54,12 @@ class UserProfile extends React.Component {
             .then(res => {
                 if (res.ok) {
                     res.json().then(json => {
-                        console.log(json.message)
+                        console.log(json)
                     })
+                    this.setState({
+                            isProfileSyncedWithServer: true
+                        }
+                    )
                 } else {
                     console.log("Error")
                 }
@@ -65,7 +71,12 @@ class UserProfile extends React.Component {
         this.setState({
             [name]: event.target.value
         });
-
+        if (this.state.isProfileSyncedWithServer) {
+            this.setState({
+                    isProfileSyncedWithServer: false
+                }
+            )
+        }
     }
 
     render() {
@@ -81,7 +92,7 @@ class UserProfile extends React.Component {
                        onChange={this.handleChange}/>
                 <br/>
                 <label type="user_profile_fields_labels">Full name</label>
-                <input type="text"
+                <input type="user_profile_text"
                        value={this.state.fullName}
                        name="fullName"
                        onChange={this.handleChange}/>
@@ -93,24 +104,28 @@ class UserProfile extends React.Component {
                        onChange={this.handleChange}/>
                 <br/>
                 <label type="user_profile_fields_labels">City</label>
-                <input type="text"
+                <input type="user_profile_text"
                        value={this.state.userCity}
                        name="userCity"
                        onChange={this.handleChange}/>
                 <br/>
                 <label type="user_profile_fields_labels">College</label>
-                <input type="text"
+                <input type="user_profile_text"
                        value={this.state.college}
                        name="college"
                        onChange={this.handleChange}/>
                 <br/>
                 <label type="user_profile_fields_labels">Desired Position</label>
-                <input type="text"
+                <input type="user_profile_text"
                        value={this.state.desiredPosition}
-                       name="username"
+                       name="desiredPosition"
                        onChange={this.handleChange}/>
                 <br/>
-                <input type="submit" value="Update"/>
+                <input type="submit"
+                       className="user_profile_update_submit"
+                       value={this.state.isProfileSyncedWithServer ? "✅ Updated!" : "Update"}
+                       disabled={this.state.isProfileSyncedWithServer}
+                />
             </form>
         </div>)
     }

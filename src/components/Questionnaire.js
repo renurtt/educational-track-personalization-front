@@ -2,6 +2,8 @@ import * as React from "react";
 
 import './Questionnaire.css';
 import ApiClient from "../services/ApiClient";
+import AuthClient from "../services/AuthClient";
+import {Navigate} from "react-router-dom";
 
 class Questionnaire extends React.Component {
     constructor() {
@@ -37,11 +39,14 @@ class Questionnaire extends React.Component {
     }
 
     render() {
+        if (AuthClient.ACCESS_TOKEN==null) {
+            return (<Navigate to='/'/>)
+        }
         return (
             <div className="Questionnaire">
             <h3>Questionnaire</h3>
             <form onSubmit={this.handleSubmitResult}>
-                <label>Name: </label>
+                <label>Desire: </label>
                 <input type="text"
                        value={this.state.hey}
                        name="hey"

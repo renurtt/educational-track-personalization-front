@@ -16,7 +16,7 @@
 form {
     width: 40%;
 }
-input[type=text] {
+input[type=user_profile_text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -35,7 +35,7 @@ input[type=number] {
     margin: 8px 0;
     box-sizing: border-box;
 }
-input[type=submit] {
+input.user_profile_update_submit {
     background-color: #82a0b4;
     color: white;
     padding: 12px 20px;
@@ -48,7 +48,7 @@ input[type=submit] {
     position: center;
     font-size: 12pt;
 }
-input[type=submit]:hover {
+input.user_profile_update_submit:hover {
     background-color: #45a049;
 }
 label[type=user_profile_fields_labels] {

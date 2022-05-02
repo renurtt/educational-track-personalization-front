@@ -11,7 +11,6 @@ function App() {
 
     return (
         <div className="App">
-
             <header className="App-header">
                 {AuthClient.ACCESS_TOKEN==null ? (<Link to="/login"><button type="menu-button">Sign in</button></Link>) :
                     (<div><text>you're now signed in</text><br/><br/></div>)}
@@ -20,6 +19,7 @@ function App() {
                 <Link to="/test-component"><button type="menu-button">Test component</button></Link>
                 {AuthClient.ACCESS_TOKEN!=null ? (<Link to="/questionnaire"><button type="menu-button">Questionnaire</button></Link>) : null}
                 <Link to="/articles"><button type="menu-button">Articles</button></Link>
+                {AuthClient.ACCESS_TOKEN!=null ? (<Link to="/track"><button type="menu-button">Educational Track</button></Link>) : null}
             </header>
         </div>
 

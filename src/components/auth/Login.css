@@ -9,3 +9,14 @@
     font-size: calc(10px + 2vmin);
     color: #ffffff;
 }
+
+input[type=auth_username] {
+    padding: 5px 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+input[type=password] {
+    padding: 5px 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}

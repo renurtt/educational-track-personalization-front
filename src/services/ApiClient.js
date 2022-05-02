@@ -11,6 +11,7 @@ class ApiClient {
     static POST_ADD_ARTICLE_READ = '/user/current/addArticle';
     static GET_ARTICLE_LIST = '/article/list';
     static GET_ARTICLE_BY_ID = '/article/';
+    static GET_TRACK_LATEST = '/track/latest';
 
     // static POST_RESULT = '/attempts';
 
@@ -60,7 +61,7 @@ class ApiClient {
         return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_ARTICLE_LIST, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json',
-                'Authorization': AuthClient.ACCESS_TOKEN
+                'Authorization': (AuthClient.ACCESS_TOKEN != null) ? AuthClient.ACCESS_TOKEN : ''
             }
         });
     }
@@ -69,7 +70,7 @@ class ApiClient {
         return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_ARTICLE_BY_ID + id, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json',
-                'Authorization': AuthClient.ACCESS_TOKEN
+                'Authorization': (AuthClient.ACCESS_TOKEN != null) ? AuthClient.ACCESS_TOKEN : ''
             }
         });
     }
@@ -79,7 +80,20 @@ class ApiClient {
             method: 'POST', headers: {
                 'Content-Type': 'application/json',
                 'Authorization': AuthClient.ACCESS_TOKEN
-            }, body: JSON.stringify({id: parseInt(id)})
+
+            }, body: JSON.stringify({
+                id: parseInt(id),
+                learningMaterialType: "article"
+            })
+        });
+    }
+
+    static getLatestTrack(): Promise<Response> {
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_TRACK_LATEST, {
+            method: 'GET', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': AuthClient.ACCESS_TOKEN
+            }
         });
     }
 }
