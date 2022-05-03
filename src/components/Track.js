@@ -9,6 +9,7 @@ import {LearningMaterialDTO} from "../dto/LearningMaterialDTO";
 import {TrackStepDTO} from "../dto/TrackStepDTO";
 import AuthClient from "../services/AuthClient";
 import Xarrow from "react-xarrows";
+import ApplicationHeader from "./ApplicationHeader";
 
 class Track extends React.Component {
 
@@ -19,30 +20,49 @@ class Track extends React.Component {
         this.state = {
             trackLoaded: false
         };
-        console.log("hey")
 
+        this.requestTrack();
+
+        this.handleGenerateTrackButton = this.handleGenerateTrackButton.bind(this);
+    }
+
+
+    handleGenerateTrackButton(event) {
+        ApiClient.generateNewTrack().then(res => {
+            if (res.ok) {
+                this.requestTrack();
+            } else {
+                console.log("Error")
+            }
+        });
+    }
+
+    requestTrack() {
         ApiClient.getLatestTrack().then(res => {
             if (res.ok) {
                 res.json().then(json => {
+                    this.track = new TrackDTO();
                     this.track.trackId = json.trackId;
                     this.track.destination = json.destination;
+                    if (json.trackSteps != null) {
+                        for (let index = 0; index < json.trackSteps.length; index++) {
+                            let trackStep: TrackStepDTO = new TrackStepDTO();
+                            trackStep.completed = json.trackSteps[index].completed;
+                            trackStep.stepOrderNumber = json.trackSteps[index].stepOrderNumber;
+                            trackStep.trackStepId = json.trackSteps[index].trackStepId;
 
-                    for (let index = 0; index < json.trackSteps.length; index++) {
-                        let trackStep: TrackStepDTO = new TrackStepDTO();
-                        trackStep.completed = json.trackSteps[index].completed;
-                        trackStep.stepOrderNumber = json.trackSteps[index].stepOrderNumber;
-                        trackStep.trackStepId = json.trackSteps[index].trackStepId;
+                            trackStep.learningMaterial.id = json.trackSteps[index].learningMaterial.id;
+                            trackStep.learningMaterial.learningMaterialType = json.trackSteps[index].learningMaterial.learningMaterialType;
+                            trackStep.learningMaterial.description = json.trackSteps[index].learningMaterial.description;
+                            trackStep.learningMaterial.title = json.trackSteps[index].learningMaterial.title;
 
-                        trackStep.learningMaterial.id = json.trackSteps[index].learningMaterial.id;
-                        trackStep.learningMaterial.learningMaterialType = json.trackSteps[index].learningMaterial.learningMaterialType;
-                        trackStep.learningMaterial.description = json.trackSteps[index].learningMaterial.description;
-                        trackStep.learningMaterial.title = json.trackSteps[index].learningMaterial.title;
+                            this.track.addTrackStep(trackStep);
+                        }
 
-                        this.track.addTrackStep(trackStep);
+                        this.track.trackSteps.sort((a, b) => {
+                            return a.stepOrderNumber > b.stepOrderNumber
+                        })
                     }
-                    this.track.trackSteps.sort((a, b) => {
-                        return a.stepOrderNumber > b.stepOrderNumber
-                    })
                     console.log(this.track)
                     this.setState({
                         trackLoaded: true
@@ -52,22 +72,12 @@ class Track extends React.Component {
                 console.log("Error")
             }
         });
-
-        this.handleMarkAsReadButton = this.handleMarkAsReadButton.bind(this);
-    }
-
-
-    handleMarkAsReadButton(event) {
     }
 
 
     render() {
         if (AuthClient.ACCESS_TOKEN == null) {
             return (<Navigate to='/'/>)
-        }
-        if (!this.state.trackLoaded) {
-            return <div className="Track">
-            </div>
         }
         let trackRender = []
         let xarrow = []
@@ -94,11 +104,23 @@ class Track extends React.Component {
                     <label className="TrackStepTitle"> {this.track.destination}</label>
                 </div>
             ))
-        xarrow.push((<TrackArrow startId={"trackStep" + (this.track.trackSteps.length - 1)} endId="trackDest"/>))
+        if (this.track.trackSteps.length > 0) {
+            xarrow.push((<TrackArrow startId={"trackStep" + (this.track.trackSteps.length - 1)} endId="trackDest"/>))
+        }
+        console.log("this.state.trackLoaded=" + this.state.trackLoaded)
         return (
-            <div className="Track">
-                {xarrow}
-                {trackRender}
+            <div>
+                <ApplicationHeader/>
+                <div className="Track">
+                    <button className="GenerateTrackButton" onClick={this.handleGenerateTrackButton}>Generate</button>
+                    {this.state.trackLoaded ? (
+                        <div className="TrackView">
+                            {xarrow}
+                            {trackRender}
+                        </div>
+                    ) : null
+                    }
+                </div>
             </div>
         )
     }
@@ -109,7 +131,7 @@ class TrackArrow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startId : props.startId,
+            startId: props.startId,
             endId: props.endId
         }
     }

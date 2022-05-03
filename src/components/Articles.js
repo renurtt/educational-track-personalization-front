@@ -4,6 +4,7 @@ import './Articles.css';
 import ApiClient from "../services/ApiClient";
 import ArticleDTO from "../dto/ArticleDTO";
 import {Navigate} from "react-router-dom";
+import ApplicationHeader from "./ApplicationHeader";
 
 class Articles extends React.Component {
 
@@ -58,8 +59,8 @@ class Articles extends React.Component {
         let articlesRender = []
         for (let i = 0; i < this.articles.length; i++) {
             articlesRender.push((
-                <div type="articleType" data-value1={this.articles[i].id}
-                     onClick={this.handleSubmitResult} key={i}>
+                <div key={i} type="articleType" data-value1={this.articles[i].id}
+                     onClick={this.handleSubmitResult}>
 
                     <label
                         type="articles_list_title">{this.articles[i].read ? "✅ " : ""}{this.articles[i].title}
@@ -68,12 +69,16 @@ class Articles extends React.Component {
                     <br/>
                     <label type="articles_list_description">{this.articles[i].description}</label>
                 </div>))
+
             articlesRender.push(<br/>)
         }
         return (this.state.articleChosen) ? (<Navigate to={'/article/' + this.articleChosenId}/>) : (
-            <div className="Articles">
-                <h3 type="articles_page_title">Articles</h3>
-                {articlesRender}
+            <div>
+                <ApplicationHeader/>
+                <div className="Articles">
+                    <h3 type="articles_page_title">Articles</h3>
+                    {articlesRender}
+                </div>
             </div>)
     }
 }

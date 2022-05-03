@@ -1,0 +1,42 @@
+
+.header {
+    height: 60px;
+    background-color: #799494;
+    color: white;
+}
+
+.header .header_container {
+    height: 100%;
+}
+
+div.header_container {
+    padding-left: 5%;
+    display: flex;
+    align-items: center;
+}
+
+button.header_menu_button {
+    background-color: rgba(130, 160, 180, 0.44);
+    color: white;
+    padding: 12px 12px;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    cursor: pointer;
+    min-width: 120px;
+    margin: 0 0px;
+}
+
+div.auth_header_container {
+    width: 30%;
+    position: absolute;
+    right: 5%;
+}
+
+button.header_menu_button:hover {
+    background-color: #fa6a6a;
+}
+
+button.auth_header_button {
+    float: right;
+}

@@ -8,6 +8,7 @@ class ArticleDTO {
     category;
     tags;
     read;
+    liked;
 }
 
 export default ArticleDTO;

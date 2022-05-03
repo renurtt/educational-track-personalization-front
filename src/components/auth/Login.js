@@ -24,6 +24,7 @@ class Login extends React.Component {
             .then(res => {
                 if (res.ok) {
                     res.json().then(json => {
+                        AuthClient.USERNAME = this.state.username;
                         this.setState({
                             message: json.result,
                             username: '',

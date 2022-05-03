@@ -3,12 +3,35 @@
     background-color: #9a8b8b;
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: #ffffff;
     padding-bottom: 100px;
+}
+
+div.TrackView {
+    flex-direction: row;
+    display: flex;
+}
+
+button.GenerateTrackButton {
+    background-color: #82a0b4;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    margin-bottom: 5%;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    min-width: 10%;
+    margin-top: 40px;
+    position: center;
+    font-size: 12pt;
+}
+button.GenerateTrackButton:hover {
+    background-color: #45a049;
 }
 
 div.TrackStep:hover {
@@ -23,16 +46,16 @@ div.TrackStep {
     margin-left: 15px;
     margin-right: 15px;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     cursor: pointer;
+    overflow:hidden;
 
 
     /* vertical alignment inside div */
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow:hidden;
 
     /* allow \n */
     white-space: pre-line;

@@ -13,7 +13,7 @@
 
 div[type=article_articleType] {
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     width: 50%;
 }
 label[type=category] {
@@ -80,4 +80,40 @@ button[type=article_mark_as_read] {
 }
 button[type=article_mark_as_read]:hover {
     background-color: #45a049;
+}
+
+div.likeButton {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+button[type=article_liked] {
+    background-color: #bd9d00;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 10px;
+    font-size: 12pt;
+}
+button[type=article_liked]:hover {
+    background-color: rgba(255, 212, 107, 0.54);
+}
+button[type=article_unliked] {
+    background-color: #82a0b4;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    width: 50%;
+    margin-top: 10px;
+    font-size: 12pt;
+}
+button[type=article_unliked]:hover {
+    background-color: rgba(255, 212, 107, 0.54);
 }

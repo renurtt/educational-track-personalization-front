@@ -4,6 +4,7 @@ import './Questionnaire.css';
 import ApiClient from "../services/ApiClient";
 import AuthClient from "../services/AuthClient";
 import {Navigate} from "react-router-dom";
+import ApplicationHeader from "./ApplicationHeader";
 
 class Questionnaire extends React.Component {
     constructor() {
@@ -39,22 +40,25 @@ class Questionnaire extends React.Component {
     }
 
     render() {
-        if (AuthClient.ACCESS_TOKEN==null) {
+        if (AuthClient.ACCESS_TOKEN == null) {
             return (<Navigate to='/'/>)
         }
         return (
-            <div className="Questionnaire">
-            <h3>Questionnaire</h3>
-            <form onSubmit={this.handleSubmitResult}>
-                <label>Desire: </label>
-                <input type="text"
-                       value={this.state.hey}
-                       name="hey"
-                       onChange={this.handleChange}/>
-                <br/>
-                <input type="submit" value="Submit"/>
-            </form>
-        </div>)
+            <div>
+                <ApplicationHeader/>
+                <div className="Questionnaire">
+                    <h3>Questionnaire</h3>
+                    <form onSubmit={this.handleSubmitResult}>
+                        <label>Desire: </label>
+                        <input type="text"
+                               value={this.state.hey}
+                               name="hey"
+                               onChange={this.handleChange}/>
+                        <br/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
+            </div>)
     }
 }
 
