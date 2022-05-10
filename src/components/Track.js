@@ -10,6 +10,8 @@ import {TrackStepDTO} from "../dto/TrackStepDTO";
 import AuthClient from "../services/AuthClient";
 import Xarrow from "react-xarrows";
 import ApplicationHeader from "./ApplicationHeader";
+import BounceLoader from "react-spinners/BounceLoader";
+import {Spring} from "react-spring"
 
 class Track extends React.Component {
 
@@ -18,7 +20,8 @@ class Track extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            trackLoaded: false
+            trackLoaded: false,
+            trackGenerating: false
         };
 
         this.requestTrack();
@@ -28,9 +31,15 @@ class Track extends React.Component {
 
 
     handleGenerateTrackButton(event) {
+        this.setState({
+            trackGenerating: true
+        });
         ApiClient.generateNewTrack().then(res => {
-            if (res.ok) {
+            if (res.status === 200) {
                 this.requestTrack();
+            }
+            if (res.status === 204) {
+                // unsuccessful
             } else {
                 console.log("Error")
             }
@@ -72,6 +81,9 @@ class Track extends React.Component {
                 console.log("Error")
             }
         });
+        this.setState({
+            trackGenerating: false
+        });
     }
 
 
@@ -112,13 +124,25 @@ class Track extends React.Component {
             <div>
                 <ApplicationHeader/>
                 <div className="Track">
-                    <button className="GenerateTrackButton" onClick={this.handleGenerateTrackButton}>Generate</button>
-                    {this.state.trackLoaded ? (
+                    {(this.state.trackGenerating) ?
+                        <button className="GenerateTrackButton GenerateTrackBeingGeneratedButton"
+                                disabled={true}>
+                            Generate
+                        </button>
+                        :
+                        <button className="GenerateTrackButton"
+                                onClick={this.handleGenerateTrackButton}>
+                            Generate
+                        </button>
+                    }
+                    {this.state.trackLoaded && !this.state.trackGenerating ? (
                         <div className="TrackView">
                             {xarrow}
                             {trackRender}
                         </div>
-                    ) : null
+                    ) : this.state.trackGenerating ?
+                        (<BounceLoader  size={180} color={"#eca6a6"}/>) :
+                        null
                     }
                 </div>
             </div>
