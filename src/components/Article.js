@@ -50,7 +50,7 @@ class Article extends React.Component {
 
 
     handleMarkAsReadButton(event) {
-        ApiClient.articleRead(this.article.id).then(res => {
+        ApiClient.materialCompleted(this.article.id).then(res => {
             if (res.ok) {
                 this.setState({
                     articleRead: true
@@ -108,7 +108,7 @@ class Article extends React.Component {
                         <label type="tags">{this.article.tags}</label>
                         <br/>
                         {this.state.articleRead ?
-                            (<button type="article_mark_as_read" disabled={true}>Read! 🎉</button>) :
+                            (<button type="article_mark_as_read" disabled={true} style={{pointerEvents: "none"}}>Read! 🎉</button>) :
                             (<button type="article_mark_as_read" onClick={this.handleMarkAsReadButton}>Mark as
                                 read</button>)}
                         <div className="likeButton">

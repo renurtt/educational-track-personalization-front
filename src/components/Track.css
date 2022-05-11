@@ -1,6 +1,6 @@
 .Track {
     text-align: left;
-    background-color: #9a8b8b;
+    background-color: #F2C57C;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ div.TrackView {
 }
 
 button.GenerateTrackButton {
-    background-color: #82a0b4;
+    background-color: #426a5a;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -33,55 +33,124 @@ button.GenerateTrackButton {
     font-size: 12pt;
 }
 button.GenerateTrackButton:hover {
-    background-color: #45a049;
-}
-.spinner {
-    height: 5px;
-    width: 5px;
+    background-color: #7FB685;
 }
 
 button.GenerateTrackBeingGeneratedButton {
-    background-color: #45a049;
-
+    background-color: #7FB685;
 }
 
 div.TrackStep:hover {
-    background-color: #da5b5b;
+    background-color: #ef6f6c;
 }
-div.TrackStep {
+div.TrackStepCompleted:hover {
+    background-color: #ef6f6c;
+}
+div.TrackStepCompleted {
+    background-color: #568a73;
     border-width: 2px;
     border-color: #7e7e7e;
-    background-color: #eca6a6;
     border-style: solid;
-    padding: 12px 20px;
+    padding: 0px 20px;
     margin-left: 15px;
     margin-right: 15px;
     border-radius: 50%;
     width: 180px;
     height: 180px;
     cursor: pointer;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    white-space: pre-line;
+}
+div.TrackStep {
+    border-width: 2px;
+    border-color: #7e7e7e;
+    background-color: #7FB685;
+    border-style: solid;
+    padding: 0px 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 
 
-    /* vertical alignment inside div */
+    /* vertical alignment inside div:
+
     display: flex;
     align-items: center;
     justify-content: center;
+    */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
 
     /* allow \n */
     white-space: pre-line;
 }
 
 div.TrackDest  {
-    background-color: #da5b5b;
+    background-color: #ef6f6c;
 }
 
+div.LearningMaterialType {
+    background-color: #426a5a;
+    /*position: relative;*/
+    position: absolute;
+    float: start;
+    overflow: no-content;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+div.TrackStepContent {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 label.TrackStepTitle {
     text-align: center;
     align-items: center;
+    justify-content: center;
     /*font-size : clamp(0.001rem, vw, 2rem);;*/
     font-size: 13pt;
     cursor: pointer;
     /*font-size-adjust: 0.58;*/
+}
+
+div.NotificationError {
+    border-width: 2px;
+    border-color: #7e7e7e;
+    background-color: #fa7272;
+    position: absolute;
+    right: 2%;
+    margin-top: 15px;
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    /*justify-content: right;*/
+
+    font-size: 10pt;
+    min-width: 20%;
+    height: 50px;
+    /*float: right;*/
+}
+
+label.NotificationErrorLabel {
+    text-align: right;
+    /*right: 1px;*/
 }

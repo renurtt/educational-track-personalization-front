@@ -100,10 +100,10 @@ button[type=article_liked] {
     font-size: 12pt;
 }
 button[type=article_liked]:hover {
-    background-color: rgba(255, 212, 107, 0.54);
+    background-color: #DDAE7E;
 }
 button[type=article_unliked] {
-    background-color: #82a0b4;
+    background-color: #426a5a;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -115,5 +115,5 @@ button[type=article_unliked] {
     font-size: 12pt;
 }
 button[type=article_unliked]:hover {
-    background-color: rgba(255, 212, 107, 0.54);
+    background-color: #DDAE7E;
 }

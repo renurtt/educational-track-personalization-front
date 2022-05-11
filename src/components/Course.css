@@ -1,0 +1,54 @@
+.Course {
+    text-align: left;
+    background-color: #F2C57C;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #ffffff;
+    padding-bottom: 100px;
+}
+
+div.CourseType {
+    width: 50%;
+}
+
+h3.CourseTitleH3 {
+    color: #282c34;
+}
+label.CourseDescLabel {
+    color: #282c34;
+    font-size: 15pt;
+}
+button.ExternalLinkButton {
+    color: #282c34;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    position: center;
+    font-size: 12pt;
+}
+button.ExternalLinkButton:hover {
+    background-color: #45a049;
+}
+button.MarkAsCompleted {
+    background-color: #426a5a;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 40px;
+    position: center;
+    font-size: 12pt;
+}
+
+button.MarkAsCompleted:hover {
+    background-color: #45a049;
+}

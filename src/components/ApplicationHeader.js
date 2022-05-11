@@ -7,11 +7,8 @@ class ApplicationHeader extends React.Component {
     render() {
         return (<header className='header'>
             <div className='header_container'>
-                <Link to="/test-component">
-                    <button className="header_menu_button">Test component</button>
-                </Link>
                 {AuthClient.ACCESS_TOKEN != null ? (<Link to="/questionnaire">
-                    <button className="header_menu_button">Questionnaire</button>
+                    <button className="header_menu_button">Skills</button>
                 </Link>) : null}
                 <Link to="/articles">
                     <button className="header_menu_button">Articles</button>

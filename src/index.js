@@ -16,10 +16,22 @@ import UserProfile from "./components/auth/UserProfile";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
 import Track from "./components/Track";
+import Course from "./components/Course";
+import Job from "./components/Job";
 
 const Wrapper = (props) => {
     const params = useParams();
     return <Article {...{...props, match: {params}} } />
+}
+
+const CourseWrapper = (props) => {
+    const params = useParams();
+    return <Course {...{...props, match: {params}} } />
+}
+
+const JobWrapper = (props) => {
+    const params = useParams();
+    return <Job {...{...props, match: {params}} } />
 }
 
 ReactDOM.render(
@@ -34,6 +46,8 @@ ReactDOM.render(
             <Route path="articles" element={<Articles />} />
             <Route path="article/:id" element={<Wrapper />} />
             <Route path="track" element={<Track />} />
+            <Route path="course/:id" element={<CourseWrapper />} />
+            <Route path="job/:id" element={<JobWrapper />} />
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')

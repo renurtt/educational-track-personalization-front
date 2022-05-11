@@ -1,6 +1,7 @@
 import AuthClient from "./AuthClient";
 import ClientConfig from "./ClientConfig";
 import User from "../dto/User";
+import UserSkillDTO from "../dto/UserSkillDTO";
 
 const SERVER_HOST_PORT = process.env.REACT_APP_BACKEND_HOST || 'localhost:8080';
 
@@ -8,11 +9,17 @@ class ApiClient {
     static GET_CHALLENGE = '/test';
     static POST_QUESTIONNAIRE = '/questionnaire';
     static GET_CURRENT_USER = '/user/current';
-    static POST_ADD_ARTICLE_READ = '/user/current/addArticle';
+    static POST_ADD_ARTICLE_READ = '/user/current/addCompletedMaterial';
     static POST_ADD_LIKE = '/material/addLike';
     static POST_REMOVE_LIKE = '/material/removeLike';
     static GET_ARTICLE_LIST = '/article/list';
     static GET_ARTICLE_BY_ID = '/article/';
+    static GET_COURSE_BY_ID = '/course/';
+    static GET_JOB_BY_ID = '/job/';
+    static GET_USER_SKILLS = '/skill/userSkillsList/';
+    static GET_ALL_SKILL_NAMES = '/skill/getSkillNames/';
+    static POST_UPDATE_SKILLS = '/skill/';
+    static DELETE_SKILL = '/skill/remove';
     static GET_TRACK_LATEST = '/track/latest';
     static POST_TRACK_GENERATE = '/track/generate';
 
@@ -78,7 +85,25 @@ class ApiClient {
         });
     }
 
-    static articleRead(id): Promise<Response> {
+    static getCourse(id: number): Promise<Response> {
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_COURSE_BY_ID + id, {
+            method: 'GET', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': (AuthClient.ACCESS_TOKEN != null) ? AuthClient.ACCESS_TOKEN : ''
+            }
+        });
+    }
+
+    static getJob(id: number): Promise<Response> {
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_JOB_BY_ID + id, {
+            method: 'GET', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': (AuthClient.ACCESS_TOKEN != null) ? AuthClient.ACCESS_TOKEN : ''
+            }
+        });
+    }
+
+    static materialCompleted(id): Promise<Response> {
         return fetch(ClientConfig.SERVER_LINK + ApiClient.POST_ADD_ARTICLE_READ, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json',
@@ -86,10 +111,11 @@ class ApiClient {
 
             }, body: JSON.stringify({
                 id: parseInt(id),
-                learningMaterialType: "article"
+                // learningMaterialType: "article"
             })
         });
     }
+
 
     static learningMaterialLike(id, learningMaterialType): Promise<Response> {
         return fetch(ClientConfig.SERVER_LINK + ApiClient.POST_ADD_LIKE, {
@@ -131,6 +157,46 @@ class ApiClient {
                 'Content-Type': 'application/json',
                 'Authorization': AuthClient.ACCESS_TOKEN
             }
+        });
+    }
+
+    static requestSkills(): Promise<Response> {
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_USER_SKILLS, {
+            method: 'GET', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': (AuthClient.ACCESS_TOKEN != null) ? AuthClient.ACCESS_TOKEN : ''
+            }
+        });
+    }
+
+    static getAllSkillNames(): Promise<Response> {
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.GET_ALL_SKILL_NAMES, {
+            method: 'GET', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': (AuthClient.ACCESS_TOKEN != null) ? AuthClient.ACCESS_TOKEN : ''
+            }
+        });
+    }
+
+
+    static updateSkills(userSkillDto : UserSkillDTO[]): Promise<Response> {
+        console.log(JSON.stringify(userSkillDto))
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.POST_UPDATE_SKILLS, {
+            method: 'POST', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': AuthClient.ACCESS_TOKEN
+            }, body: JSON.stringify(userSkillDto)
+        });
+    }
+
+    static deleteSkill(id): Promise<Response> {
+        return fetch(ClientConfig.SERVER_LINK + ApiClient.DELETE_SKILL, {
+            method: 'DELETE', headers: {
+                'Content-Type': 'application/json',
+                'Authorization': AuthClient.ACCESS_TOKEN
+            }, body: JSON.stringify({
+                id: parseInt(id)
+            })
         });
     }
 }
