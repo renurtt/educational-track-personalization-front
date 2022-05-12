@@ -20,7 +20,7 @@ h3.JobTitleH3 {
 }
 label.JobCommonLabel {
     color: #282c34;
-    font-size: 13pt;
+    font-size: 12pt;
 }
 label.JobDescLabel {
     color: #282c34;
@@ -29,14 +29,14 @@ label.JobDescLabel {
     display: block;
 }
 label.JobFieldLabel {
-    font-size: 13pt;
+    font-size: 12pt;
     color: #426a5a;
     margin-top: 5px;
     text-decoration: underline;
 }
 label.JobFieldName {
     color: #464646;
-    font-size: 13pt;
+    font-size: 12pt;
 }
 button.ExternalLinkButton {
     color: #282c34;

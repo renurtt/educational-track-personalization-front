@@ -1,13 +1,13 @@
 .Article {
     text-align: left;
-    background-color: #9a8b8b;
+    background-color: #F2C57C;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: #ffffff;
+    color: #000000;
     padding-bottom: 100px;
 }
 
@@ -19,7 +19,7 @@ div[type=article_articleType] {
 label[type=category] {
     font-size: 12pt;
     float: left;
-    color: #a6ff3b;
+    color: #426a5a;
     width: 70%;
     margin-top: 5px;
     text-decoration: underline;
@@ -27,14 +27,14 @@ label[type=category] {
 label[type=category_word] {
     font-size: 12pt;
     float: left;
-    color: #c5c5c5;
-    width: 11%;
+    color: #464646;
+    width: 12%;
     margin-top: 5px;
 }
 label[type=date] {
     font-size: 12pt;
     float: left;
-    color: #c5c5c5;
+    color: #464646;
     width: 100%;
     margin-top: 5px;
     text-align: right;
@@ -43,7 +43,7 @@ label[type=date] {
 label[type=content] {
     font-size: 12pt;
     float: left;
-    color: #ffffff;
+    color: #000000;
     width: 100%;
     text-align: justify;
     margin-top: 5px;
@@ -53,7 +53,7 @@ label[type=content] {
 label[type=tags] {
     font-size: 12pt;
     float: left;
-    color: #c5c5c5;
+    color: #464646;
     width: 100%;
     text-align: justify;
     margin-top: 5px;
@@ -66,7 +66,7 @@ h3[type=article_title] {
 }
 
 button[type=article_mark_as_read] {
-    background-color: #82a0b4;
+    background-color: #426a5a;
     color: white;
     padding: 12px 20px;
     border: none;

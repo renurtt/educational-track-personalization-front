@@ -98,8 +98,11 @@ class Job extends React.Component {
                 <div className="Job">
                     <div className="JobType">
                         <h3 className="JobTitleH3">{this.job.title}</h3>
-                        <label className="JobFieldName">Work line: </label>
-                        <label className="JobCommonLabel">{this.job.workLine}</label>
+                        {this.job.workLine !== "" ?
+                            [<label className="JobFieldName">Work line: </label>,
+                                <label className="JobCommonLabel">{this.job.workLine}</label>]
+                            : null
+                        }
                         <br/>
 
                         <label className="JobFieldName">Employer: </label>
@@ -111,21 +114,28 @@ class Job extends React.Component {
                                 <label className="JobCommonLabel">)</label>
                             ]) :
                             null}
-                        <br/><br/>
-                        <label className="JobFieldName">📍 </label>
-                        <label className="JobCommonLabel">{this.job.city}</label>
+                        {this.job.workLine !== "" ?
+                            [<br/>, <label className="JobFieldName">📍 </label>,
+                        <label className="JobCommonLabel">{this.job.city}</label>]
+                            : null
+                        }
                         <br/><br/>
                         <label className="JobDescLabel">{this.job.description}</label>
-                        <br/>
-                        <label className="JobFieldName">Occupancy: </label>
-                        <label className="JobCommonLabel">{this.job.occupancy}</label>
-                        <br/>
-                        <label className="JobFieldName">Work experience: </label>
-                        <label className="JobCommonLabel">{this.job.workExperience}</label>
+                        {this.job.occupancy !== "" ?
+                            [<br/>, <label className="JobFieldName">Occupancy: </label>,
+                                <label className="JobCommonLabel">{this.job.occupancy}</label>]
+                            : null
+                        }
+                        {this.job.workExperience !== "" ?
+                            [<br/>, <label className="JobFieldName">Work experience: </label>,
+                                <label className="JobCommonLabel">{this.job.workExperience}</label>]
+                            : null
+                        }
 
                         <br/><br/>
                         {this.state.jobCompleted ?
-                            (<button className="MarkAsCompleted" disabled={true} style={{pointerEvents: "none"}}>Completed!</button>) :
+                            (<button className="MarkAsCompleted" disabled={true}
+                                     style={{pointerEvents: "none"}}>Completed!</button>) :
                             (<button className="MarkAsCompleted" onClick={this.handleMarkAsReadButton}>Mark as
                                 completed</button>)}
 

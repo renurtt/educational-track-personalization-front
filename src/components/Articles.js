@@ -5,6 +5,7 @@ import ApiClient from "../services/ApiClient";
 import ArticleDTO from "../dto/ArticleDTO";
 import {Navigate} from "react-router-dom";
 import ApplicationHeader from "./ApplicationHeader";
+import {FadeLoader} from "react-spinners";
 
 class Articles extends React.Component {
 
@@ -77,10 +78,17 @@ class Articles extends React.Component {
                 <ApplicationHeader/>
                 <div className="Articles">
                     <h3 type="articles_page_title">Articles</h3>
-                    {articlesRender}
+                    {!this.state.articlesLoaded ? (<Loader styles={{position: "absolute", top: "50%", left: "50%",}}/>) :
+
+                    articlesRender
+                    }
                 </div>
             </div>)
     }
+}
+
+function Loader({ styles = {} }) {
+    return <FadeLoader color="#426a5a" css={styles} />;
 }
 
 export default Articles;

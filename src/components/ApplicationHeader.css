@@ -1,7 +1,7 @@
 
 .header {
     height: 60px;
-    background-color: #799494;
+    background-color: #6e9d76;
     color: white;
 }
 
@@ -16,14 +16,15 @@ div.header_container {
 }
 
 button.header_menu_button {
-    background-color: rgba(130, 160, 180, 0.44);
-    color: white;
+    background-color: #6e9d76;
+    color: #ffd8b9;
+    font-size: 11pt;
     padding: 12px 12px;
     border-width: 1px;
     border-color: #000000;
     border-style: solid;
     cursor: pointer;
-    min-width: 120px;
+    min-width: 135px;
     margin: 0 0px;
 }
 

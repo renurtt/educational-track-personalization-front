@@ -84,7 +84,7 @@ class UserProfile extends React.Component {
         return (<div>
             <ApplicationHeader/>
             <div className="UserProfile">
-                <h3>Profile</h3>
+                <h3 type="profile_page_title">Profile</h3>
 
                 <form onSubmit={this.handleSubmitResult}>
                     <label type="user_profile_fields_labels">Username</label>
