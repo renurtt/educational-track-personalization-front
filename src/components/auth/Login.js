@@ -3,6 +3,7 @@ import * as React from "react";
 import './Login.css';
 import AuthClient from "../../services/AuthClient";
 import {Link, Navigate} from "react-router-dom";
+import ApplicationHeader from "../ApplicationHeader";
 
 class Login extends React.Component {
     constructor() {
@@ -25,6 +26,7 @@ class Login extends React.Component {
                 if (res.ok) {
                     res.json().then(json => {
                         AuthClient.USERNAME = this.state.username;
+                        localStorage.setItem('username', JSON.stringify(this.state.username));
                         this.setState({
                             message: json.result,
                             username: '',
@@ -34,6 +36,7 @@ class Login extends React.Component {
                         AuthClient.ACCESS_TOKEN = res.headers.get("Authorization");
                         console.log(AuthClient.ACCESS_TOKEN)
 
+                        localStorage.setItem('sessionId', JSON.stringify(res.headers.get("Authorization")));
                     })
                 } else {
                     res.json().then(json => {
@@ -61,30 +64,37 @@ class Login extends React.Component {
 
     render() {
         return this.state.authorized ?
-            (<Navigate to='/'/>) :
-            (<div className="Login">
-                <h3>Sign In</h3>
-                <h3>{this.state.message}</h3>
-                <form onSubmit={this.handleSubmitResult}>
-                    <div className="auth">
-                        <label>Username</label>
-                        <input type="auth_username"
-                               value={this.state.username}
-                               name="username"
-                               onChange={this.handleChange}/>
+            (<Navigate to='/profile'/>) :
+            (<div>
+                <ApplicationHeader/>
+                <div className="Login">
+                    <h3 type="profile_page_title">Sign In</h3>
+                    <label className="message">{this.state.message}</label>
+                    <form onSubmit={this.handleSubmitResult} style={{alignItems: "center", justifyContent: "center"}}>
+                        <div className="auth">
+                            <label className="authLabel">Username</label>
+                            <input type="auth_username"
+                                   value={this.state.username}
+                                   name="username"
+                                   onChange={this.handleChange}/>
 
-                        <label>Password</label>
-                        <input type="password"
-                               value={this.state.password}
-                               name="password"
-                               onChange={this.handleChange}/>
+                            <label className="authLabel">Password</label>
+                            <input type="password"
+                                   value={this.state.password}
+                                   name="password"
+                                   onChange={this.handleChange}/>
+                        </div>
+                        <div className="submitButtonHolder">
+                            <input type="submit" className="auth_submit" value="Sign In"/>
+                        </div>
+                    </form>
+                    <br/>
+                    <div className="anotherAuthActionButtonHolder">
+                        <Link to="/register">
+                            <button className="anotherAuthAction">Sign Up</button>
+                        </Link>
                     </div>
-                    <input type="submit" className="auth_submit" value="Sign In"/>
-                </form>
-                <br/>
-                <Link to="/register">
-                    <button style={{backgroundColor: 'lavender', padding: '20px', borderRadius: '50%'}}>Sign Up</button>
-                </Link>
+                </div>
             </div>)
     }
 }

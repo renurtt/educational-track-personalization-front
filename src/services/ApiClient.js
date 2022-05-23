@@ -18,7 +18,7 @@ class ApiClient {
     static GET_JOB_BY_ID = '/job/';
     static GET_USER_SKILLS = '/skill/userSkillsList/';
     static GET_ALL_SKILL_NAMES = '/skill/getSkillNames/';
-    static POST_UPDATE_SKILLS = '/skill/';
+    static POST_UPDATE_SKILLS = '/skill/userSkillsList/';
     static DELETE_SKILL = '/skill/remove';
     static GET_TRACK_LATEST = '/track/latest';
     static POST_TRACK_GENERATE = '/track/generate';

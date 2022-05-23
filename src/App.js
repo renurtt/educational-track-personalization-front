@@ -1,13 +1,18 @@
+import * as React from "react";
+
 import logo from './logo.svg';
 import './App.css';
 import TestComponent from "./components/TestComponent";
 import Questionnaire from "./components/Questionnaire";
 import UserProfile from "./components/Questionnaire";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import AuthClient from "./services/AuthClient";
 import ApplicationHeader from "./components/ApplicationHeader";
 
 function App() {
+
+    return (
+        <Navigate to='/profile'/>)
 
     return (
         <div className="App">
@@ -28,7 +33,7 @@ function App() {
                 <Link to="/test-component">
                     <button type="menu-button">Test component</button>
                 </Link>
-                {AuthClient.ACCESS_TOKEN != null ? (<Link to="/questionnaire">
+                {AuthClient.ACCESS_TOKEN != null ? (<Link to="/skills">
                     <button type="menu-button">Questionnaire</button>
                 </Link>) : null}
                 <Link to="/articles">

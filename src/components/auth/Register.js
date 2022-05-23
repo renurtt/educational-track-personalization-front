@@ -3,6 +3,8 @@ import * as React from "react";
 import './Register.css';
 import AuthClient from "../../services/AuthClient";
 import {Link, Navigate} from "react-router-dom";
+import ApplicationHeader from "../ApplicationHeader";
+import {NotificationError} from "../Track";
 
 class Register extends React.Component {
     constructor() {
@@ -55,30 +57,37 @@ class Register extends React.Component {
     }
 
     render() {
-        return (<div className="Register">
-            <h3>Sign Up</h3>
-            <h3>{this.state.message}</h3>
-            <form onSubmit={this.handleSubmitResult}>
-                <div className="auth">
-                    <label>Username</label>
-                    <input type="auth_username"
-                           value={this.state.username}
-                           name="username"
-                           onChange={this.handleChange}/>
+        return (<div>
+            <ApplicationHeader/>
+            <div className="Register">
+                <h3 type="profile_page_title">Sign Up</h3>
+                <label className="message">{this.state.message}</label>
+                {/*{this.state.message !== "" ? (<NotificationError text={this.state.message}/>) : null}*/}
+                <form onSubmit={this.handleSubmitResult}>
+                    <div className="auth">
+                        <label className="authLabel">Username</label>
+                        <input type="auth_username"
+                               value={this.state.username}
+                               name="username"
+                               onChange={this.handleChange}/>
 
-                    <label>Password</label>
-                    <input type="password"
-                           value={this.state.password}
-                           name="password"
-                           onChange={this.handleChange}/>
+                        <label className="authLabel">Password</label>
+                        <input type="password"
+                               value={this.state.password}
+                               name="password"
+                               onChange={this.handleChange}/>
+                    </div>
+                    <div className="submitButtonHolder">
+                        <input type="submit" className="auth_submit" value="Sign Up"/>
+                    </div>
+                </form>
+                <br/>
+                <div className="anotherAuthActionButtonHolder">
+                    <Link to="/login">
+                        <button className="anotherAuthAction">Sign In</button>
+                    </Link>
                 </div>
-                <input type="submit" className="auth_submit" value="Sign Up"/>
-            </form>
-            <br/>
-            <Link to="/login">
-                <button style={{backgroundColor: 'yellow', padding: '20px', borderRadius: '50%'}}>Sign In</button>
-            </Link>
-
+            </div>
         </div>)
     }
 }

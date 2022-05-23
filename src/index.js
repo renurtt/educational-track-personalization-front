@@ -38,7 +38,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App />} />
-            <Route path="questionnaire" element={<Questionnaire />} />
+            <Route path="skills" element={<Questionnaire />} />
             <Route path="test-component" element={<TestComponent />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />

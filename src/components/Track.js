@@ -110,7 +110,7 @@ class Track extends React.Component {
 
     render() {
         if (AuthClient.ACCESS_TOKEN == null) {
-            return (<Navigate to='/'/>)
+            return (<Navigate to='/login'/>)
         }
         return (
             <div>
@@ -147,7 +147,7 @@ function SpinnerView(props) {
     )
 }
 
-function NotificationError(props) {
+export function NotificationError(props) {
     const contentProps = useSpring({
         from: {opacity: 0},
         to: {opacity: 1}

@@ -5,9 +5,9 @@ class AuthClient {
 
     static LOGIN_ENDPOINT = '/auth/login';
     static REGISTER_ENDPOINT = '/auth/register/user';
-    // static ACCESS_TOKEN = 'eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJRY2RPIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwiaWF0IjoxNjUwNTc4OTkwLCJleHAiOjE2NTE3ODQ0MDB9.JZuUVDruXE0-XoEgroBl0dDMYOJApjLkV_intjWyd2PEFijbGGlLaJxNqHHLB8wC';
-    static ACCESS_TOKEN = null;
-    static USERNAME = null;
+    static ACCESS_TOKEN = JSON.parse(localStorage.getItem('sessionId')) || null;
+    static USERNAME = JSON.parse(localStorage.getItem('username')) || null;
+
 
     static login(username: string, password: string): Promise<Response> {
         let fetchResult : Promise<Response> = fetch(ClientConfig.SERVER_LINK + AuthClient.LOGIN_ENDPOINT, {

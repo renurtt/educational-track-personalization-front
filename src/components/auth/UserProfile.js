@@ -4,6 +4,8 @@ import './UserProfile.css';
 import ApiClient from "../../services/ApiClient";
 import User from "../../dto/User";
 import ApplicationHeader from "../ApplicationHeader";
+import AuthClient from "../../services/AuthClient";
+import {Navigate} from "react-router-dom";
 
 class UserProfile extends React.Component {
     constructor() {
@@ -81,6 +83,9 @@ class UserProfile extends React.Component {
     }
 
     render() {
+        if (AuthClient.ACCESS_TOKEN == null) {
+            return (<Navigate to='/login'/>)
+        }
         return (<div>
             <ApplicationHeader/>
             <div className="UserProfile">

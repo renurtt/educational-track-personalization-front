@@ -144,7 +144,7 @@ class Questionnaire extends React.Component {
 
     render() {
         if (AuthClient.ACCESS_TOKEN == null) {
-            return (<Navigate to='/'/>)
+            return (<Navigate to='/login'/>)
         }
         this.userSkillsView = []
         console.log(this.userSkills)

@@ -1,13 +1,14 @@
 .Login {
-    text-align: center;
-    background-color: #eca6a6;
-    min-height: 100vh;
+    text-align: left;
+    background-color: #F2C57C;
+    min-height: 91vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: #ffffff;
+    color: #000000;
+    padding-bottom: 100px;
 }
 
 input[type=auth_username] {

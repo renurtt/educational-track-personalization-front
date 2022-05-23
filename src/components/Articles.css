@@ -1,7 +1,7 @@
 .Articles {
     text-align: left;
     background-color: #F2C57C;
-    min-height: 100vh;
+    min-height: 91vh;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -9,6 +9,7 @@
     font-size: calc(10px + 2vmin);
     color: #ffffff;
     padding-bottom: 100px;
+    /*height: 100% - 60px;*/
 }
 
 label[type=articles_list_title] {

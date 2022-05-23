@@ -1,7 +1,7 @@
 .Job {
     text-align: left;
     background-color: #F2C57C;
-    min-height: 100vh;
+    min-height: 91vh;
     display: flex;
     flex-direction: column;
     align-items: center;
